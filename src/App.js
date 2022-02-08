@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './App.css';
 import ShopItems from "./ShopItems";
 import Cart from "./Cart";
@@ -24,10 +24,6 @@ function App() {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
-
-  const onCheckout = () => {
-    setCartItems([]);
-  }
 
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
@@ -61,10 +57,10 @@ function App() {
       {page===PAGE_PRODUCTS && (
         <>
         <div className="product-page">
-          <div>
+          <div className="products">
             <ShopItems onAdd={onAdd}/>
           </div>
-          <div>
+          <div className="cart">
             <Cart onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>
           </div>
           </div>

@@ -9,13 +9,13 @@ function Checkout(props) {
     const [promotion, setPromotion] = useState('');
     let i = 0;
     const [promotionCheck, setPromotionCheck] = useState(0);
-    const [itemPrice, setItemPrice] = useState(0);
+    const [itemPrice, setItemPrice] = useState(cartItems.reduce((a, c) => a+c.price*c.qty, 0));
 
    
 
-    const onCheck = () => {
+  /*  const onCheck = () => {
         setItemPrice(cartItems.reduce((a, c) => a+c.price*c.qty, 0));
-    }
+    }*/
 
     function applyPromotion(e) {
         
@@ -115,7 +115,7 @@ function Checkout(props) {
                 <button onClick={()=> navigateTo(PAGE_ORDER)}>Checkout</button>
                 <br></br>
                 <input type="text" onChange={(e) => setPromotion(e.target.value)}></input>
-                <button onClick={onCheck}>Set price</button>
+                
                 <button onClick={applyPromotion}>Apply promotion</button>
                 <button onClick={removePromotion}>Remove promotion</button>
                 <br></br>
